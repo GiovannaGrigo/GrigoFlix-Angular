@@ -9,17 +9,33 @@ export class MovieApiService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = "https://api.themoviedb.org/3";
+  baseUrl = 'https://api.themoviedb.org/3';
   options = {
-    method: "GET",
+    method: 'GET',
     headers: {
-      accept: "application/json",
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0M2U1MGUyM2RlODU0MTEzNzJmY2IwYWI3Yzg2MjIxOCIsIm5iZiI6MTczMjA0MjA0OS4xNjk5OTk4LCJzdWIiOiI2NzNjZGQ0MTYwYjdiM2JjOTRhMGQzZTgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ZH146obDT_1TQf6DlKEXhkFjmt96unbu2M6B6J8h4iQ'
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMWVkMTFlMDBlMTk1NzRmY2RjNzYzN2M3N2IxYjFkZSIsIm5iZiI6MTc0Njc0OTk4NC4yNDg5OTk4LCJzdWIiOiI2ODFkNGEyMDE4MTRmN2Q4MTZjMWUwMjMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.JTANee0ldumFS5owbnAdEi0Py0mnTL6_MckbUXuk0YM'
     }
   };
-  
+
   // Banner de Midias da Semana
   bannerApiData(): Observable<any> {
     return this.http.get(`${this.baseUrl}/trending/all/week?language=pt-br`, this.options);
   }
+
+  // Filmes em Destaque do Dia
+  trendingMovieApiData(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/trending/movie/day?language=pt-br`, this.options)
+  }
+
+  // Séries em Destaque do Dia
+  trendingSerieApiData(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/trending/tv/day?language=pt-br`, this.options)
+  }
+
+  // Filmes de Ação mais Populares
+  popularActionMovieApiData(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/discover/movie?language=pt-br&with_genres=28&sort_by=popularity.desc`, this.options)
+  }
+
 }
