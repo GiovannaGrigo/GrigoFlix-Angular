@@ -4,7 +4,7 @@
             <div class="carousel-item" data-bs-interval="8000" *ngFor="let b of bannerResults; let i = index"
                 [ngClass]="{active:i===0}">
                 <img src="https://image.tmdb.org/t/p/original/{{b.backdrop_path }}" class="d-block w-100 opacity-75"
-                    alt="Capa Mídia">
+                    alt="Capa Mídia" routerLink="/details/{{b.media_type}}/{{b.id}}">
                 <div class="carousel-caption">
                     <h3>{{ b.title ?? b.name }}</h3>
                     <p class="d-none d-md-block">{{ b.overview }}</p>
@@ -26,7 +26,7 @@
     <div class="row mb-5">
         <h4 class="text-white">Filmes em Destaque</h4>
         <div class="rowposter mt-1" #trendingMovies autoScroll>
-            <a href="#" *ngFor="let m of trendingMovieResults">
+            <a routerLink="/details/{{m.media_type}}/{{m.id}}" *ngFor="let m of trendingMovieResults">
                 <img src="https://image.tmdb.org/t/p/w500/{{ m.poster_path }}" alt="Capa do Filme">
             </a>
         </div>
@@ -35,7 +35,7 @@
     <div class="row mb-5">
         <h4 class="text-white">Séries em Destaque</h4>
         <div class="rowposter mt-1" #trendingSeries autoScroll>
-            <a href="#" *ngFor="let m of trendingSerieResults">
+            <a routerLink="/details/{{m.media_type}}/{{m.id}}" *ngFor="let m of trendingSerieResults">
                 <img src="https://image.tmdb.org/t/p/w500/{{ m.poster_path }}" alt="Capa do Filme">
             </a>
         </div>
@@ -44,7 +44,7 @@
     <div class="row mb-5">
         <h4 class="text-white">Filmes de Ações mais Populares</h4>
         <div class="rowposter mt-1" #popularActionMovie autoScroll>
-            <a href="#" *ngFor="let m of popularActionMovieResults">
+            <a routerLink="/details/movie/{{m.id}}" *ngFor="let m of popularActionMovieResults">
                 <img src="https://image.tmdb.org/t/p/w500/{{ m.poster_path }}" alt="Capa do Filme">
             </a>
         </div>

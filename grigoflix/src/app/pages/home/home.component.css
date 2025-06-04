@@ -5,6 +5,7 @@
 #carouselBanner .carousel-item img {
     height: 100vh;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .carousel-inner .carousel-caption {
@@ -22,7 +23,7 @@
     font-size: 32px;
 }
 
-More actions .rowposter {
+.rowposter {
     display: flex;
     overflow-y: hidden;
     overflow-x: auto;
