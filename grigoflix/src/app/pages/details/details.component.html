@@ -40,7 +40,21 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        
+    </div>
+
+    <div class="row my-5 text-white">
+        <h3 class="mt-5">Elenco</h3>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+            <div class="col" *ngFor="let c of cast">
+                <div class="card" routerLink="/person/{{c.id}}">
+                    <img [src]="c.profile_path ? 'https://image.tmdb.org/t/p/w500/' + c.profile_path : '/img/no-photo-cast.png' " class="card-img-top" alt="{{c.original_name}}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{c.original_name}}</h5>
+                        <p class="card-text">{{c.character}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
