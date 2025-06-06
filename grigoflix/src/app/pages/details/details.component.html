@@ -16,4 +16,31 @@
             </button>
         </div>
     </div>
+
+    <div class="row my-5 text-white">
+        <h3 class="my-3">Vídeos</h3>
+        <div class="col" *ngIf="trailers.length == 0">
+            <h3 class="text-center my-5">Sem vídeos disponíveis</h3>
+        </div>
+        <div id="carouselVideos" class="carousel slide" *ngIf="trailers.length > 0">
+            <div class="carousel-inner">
+                <div class="carousel-item" *ngFor="let t of trailers; let i = index" [ngClass]="{active:i===0}">
+                    <iframe [src]="getSafeUrl(t.key)" class="d-block w-100 rounded-5" height="500"></iframe>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="mb-0">{{t.name}} - Publicado em: {{t.published_at | date: 'dd/MM/yyyy'}}</h5>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselVideos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselVideos" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+    </div>
+
 </div>
